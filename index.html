@@ -29,6 +29,18 @@
             border-radius: 2em;
         }
         
+        .label-add-more {
+            background: #E0E0E0;
+            color: black;
+            display: inline-block;
+            padding: 2px 7px;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 18px;
+            border: 1px solid transparent;
+            border-radius: 2em;
+        }
+        
         .button-last {
             appearance: button;
             backface-visibility: hidden;
@@ -57,30 +69,41 @@
             touch-action: manipulation;
             /* width: 100%; */
         }
-
         /* Jendela Pop Up */
+        
         #popup {
             width: 100%;
             height: 100%;
             position: fixed;
-            background: rgba(0,0,0,.7);
+            background: rgba(0, 0, 0, .7);
             top: 0;
             left: 0;
             z-index: 9999;
             visibility: hidden;
         }
-
+        
         #popup2 {
             width: 100%;
             height: 100%;
             position: fixed;
-            background: rgba(0,0,0,.7);
+            background: rgba(0, 0, 0, .7);
             top: 0;
             left: 0;
             z-index: 9999;
             visibility: hidden;
         }
-
+        
+        #popup-add-more {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(0, 0, 0, .7);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            visibility: hidden;
+        }
+        
         .window {
             width: 828px;
             height: 416px;
@@ -91,10 +114,12 @@
             text-align: center;
             margin: 15% auto;
         }
+        
         .window h2 {
             margin: 30px 0 0 0;
         }
         /* Button Close */
+        
         .close-button {
             width: 6%;
             height: 6%;
@@ -112,17 +137,21 @@
             z-index: 999;
             font-size: 30px;
         }
-
         /* Memunculkan Jendela Pop Up*/
+        
         #popup:target {
             visibility: visible;
         }
-
+        
         #popup2:target {
             visibility: visible;
         }
-
-        .for-popup{
+        
+        #popup-add-more:target {
+            visibility: visible;
+        }
+        
+        .for-popup {
             text-align: left;
             margin-left: 10px;
             font-size: 24px;
@@ -131,8 +160,8 @@
             font-family: 'IBM Plex Sans';
             line-height: 16px;
         }
-
-        .for-popup2{
+        
+        .for-popup2 {
             text-align: left;
             margin-left: 10px;
             font-size: 16px;
@@ -140,8 +169,8 @@
             font-family: 'IBM Plex Sans';
             line-height: 16px;
         }
-
-        .for-popup3{
+        
+        .for-popup3 {
             text-align: left;
             margin-left: 10px;
             font-size: 14px;
@@ -149,7 +178,7 @@
             font-family: 'IBM Plex Sans';
             line-height: 16px;
         }
-
+        
         .label-popup {
             background: #E0E0E0;
             color: black;
@@ -182,9 +211,24 @@
         </div>
     </div>
 
+    <div id="popup-add-more">
+        <div class="window" style="text-align: left;">
+            <a href="#" class="close-button" title="Close">X</a>
+            <h2 class="for-popup" style="margin-left:10px; margin-top: 20px;">Add New Medical History</h2>
+            <p class="for-popup2" style="margin-left:10px; margin-top: 30px;">Add new medical history which has not been recorded in patient’s database</p>
+            <p class="for-popup3" style="margin-left:10px; margin-top: 40px; font-weight: bold;">Medical History</p>
+            <textarea rows="7" cols="50" placeholder="Type here" style="resize: none;width: 95%; border-radius: 5px;padding: 10px;border: 2px solid #E0E0E0; margin: 10px;">
+            </textarea>
+            <div style="text-align: right;">
+                <button class="button-last" style="background-color: transparent; color:blue;" role="button">Cancel</button>
+                <button class="button-last" role="button" type="submit">Save</button>
+            </div>
+        </div>
+    </div>
+
     <div id="popup2">
-    	<div class="window" style="text-align: left;">
-        	<a href="#" class="close-button" title="Close">X</a>
+        <div class="window" style="text-align: left;">
+            <a href="#" class="close-button" title="Close">X</a>
             <h2 class="for-popup" style="margin-left:10px; margin-top: 20px;">Patient Conversation History</h2>
             <p class="for-popup2" style="margin-left:10px; margin-top: 30px;">These are the patients conversation history over these past years.</p>
             <p class="for-popup3" style="margin-left:10px; margin-top: 40px;">September 2023</p>
@@ -208,10 +252,9 @@
         </div>
     </div>
 
-
     <div id="popup">
-    	<div class="window" style="text-align: left;">
-        	<a href="#" class="close-button" title="Close">X</a>
+        <div class="window" style="text-align: left;">
+            <a href="#" class="close-button" title="Close">X</a>
             <h2 class="for-popup" style="margin-left:10px; margin-top: 20px;">Medical Records and Documents</h2>
             <p class="for-popup2" style="margin-left:10px; margin-top: 30px;">These are the patients-related documents in medical database</p>
             <p class="for-popup3" style="margin-left:10px; margin-top: 40px;">Information Records</p>
@@ -236,7 +279,6 @@
             </span>
         </div>
     </div>
-
 
     <div class="md:pl-16 pt-16" style="padding-left: 0px;">
         <div class="-mt-16 ml-auto xl:-ml-16 mr-auto xl:pl-16 pt-16 xl:h-screen w-auto sm:w-3/5 xl:w-auto grid grid-cols-12 gap-6">
@@ -277,7 +319,7 @@
                                 <p style="font-weight: bold;">Sudirman Street Kav. 50,</p>
                                 <p style="font-weight: bold;">South Jakarta 12450</p>
                             </div>
-                            <div style="float:right;width: 38%;margin: 15px;">
+                            <div style="float:right;width: 30%;margin: 15px;">
                                 <p>Date of Birth</p>
                                 <p style="font-weight: bold;">May 30th 1980</p>
                                 <p style="margin-top: 10px;">Age</p>
@@ -296,34 +338,41 @@
                             <span class="label-kemenkes">Depression</span>
                             <span class="label-kemenkes">Toxoplasmosis</span>
                             <span class="label-kemenkes">Liver Disease</span>
+                            <span class="label-add-more" style="margin-left: 10px; margin-top:10px">+ Add more</span>
 
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400; margin-top: 10px;">Immunization</p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Hepatitis A</span>
                             <span class="label-kemenkes">Influenza</span>
+                            <span class="label-add-more">+ Add more</span>
 
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400; margin-top: 10px;">Family History</p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Diabetes</span>
                             <span class="label-kemenkes">High Blood Pressure</span>
+                            <span class="label-add-more">+ Add more</span>
                         </div>
                         <div style=" float:left; width:48.5%; height:165px      ; background-color: #F8F8F8; margin-bottom: 15px; border-radius: 8px; ">
                             <div class="text-base font-medium " style="padding:10px;background-color: #0BB4AC; color: white;font-family: 'IBM Plex Sans';font-weight: 600;text-align: center;border-radius: 8px 8px 0 0; ">Known Allergies</div>
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400;">Food Allergy </p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Peanut</span>
                             <span class="label-kemenkes">Dairy Products</span>
+                            <span class="label-add-more">+ Add more</span>
 
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400; margin-top: 10px;">Drug Allergy</p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Lansoprazole</span>
                             <span class="label-kemenkes">Medixon</span>
+                            <span class="label-add-more">+ Add more</span>
                         </div>
                         <div style="float:right;width: 48.5%; height:165px;background-color: #F8F8F8; margin-left: 10px;  border-radius: 8px; margin-bottom: 15px; ">
                             <div class="text-base font-medium " style="padding:10px;background-color: #0BB4AC; color: white;font-family: 'IBM Plex Sans';font-weight: 600;text-align: center; border-radius: 8px 8px 0 0;">Chronic Condition</div>
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400;">Acute</p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Food Allergy</span>
                             <span class="label-kemenkes">Cough</span>
+                            <span class="label-add-more">+ Add more</span>
 
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400; margin-top: 10px;">Chronic</p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Diabetes</span>
                             <span class="label-kemenkes">Liver Disease</span>
+                            <a href="#popup-add-more"><span class="label-add-more"> + Add more</span></a>
                         </div>
                         <div style=" float:left; width:48.5%; height: 300px; background-color: #F8F8F8; margin-bottom: 15px; border-radius: 8px;    background-image: linear-gradient(180deg, #ECFEFD 0%, #9FF9F4 100%);">
                             <div class="text-base font-medium " style="padding:10px;font-family: 'IBM Plex Sans';font-weight: 600; font-size: 16px; ">Medical Insight</div>
@@ -351,12 +400,12 @@
                         <div style="float:right;width: 48.5%; height:300px; margin-left: 10px; margin-bottom: 15px; ">
                             <div class="text-base font-medium " style="padding:10px;font-family: 'IBM Plex Sans';font-weight: 600;">Prescription</div>
                             <!-- <form id="form"> -->
-                                <textarea name="w3review" id="presq" rows="7" cols="50" placeholder="Type your prescription here for the patient..." style="resize: none;width: 100%; border-radius: 5px;padding: 10px;">
+                            <textarea name="w3review" id="presq" rows="7" cols="50" placeholder="Type your prescription here for the patient..." style="resize: none;width: 100%; border-radius: 5px;padding: 10px;">
                                 </textarea>
-                                <div style="text-align: right;">
-                                    <button class="button-last" style="background-color: transparent; color:blue;" role="button">Reset all</button>
-                                    <button class="button-last" role="button" id="savePres" type="submit">Save</button>
-                                </div>
+                            <div style="text-align: right;">
+                                <button class="button-last" style="background-color: transparent; color:blue;" role="button">Reset all</button>
+                                <button class="button-last" role="button" id="savePres" type="submit">Save</button>
+                            </div>
                             <!-- </form> -->
                         </div>
                     </div>
