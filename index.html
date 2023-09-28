@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0028)http://topson.left4code.com/ -->
 <html lang="en" class="">
 <script type="text/javascript" src="chrome-extension://mdnleldcmiljblolnjhpnblkcekpdkpa/libs/customElements.js" class="__REQUESTLY__SCRIPT"></script>
 
@@ -45,9 +44,6 @@
             appearance: button;
             backface-visibility: hidden;
             background-color: #A2C95F;
-            /* border-radius: 6px; */
-            /* border-width: 0;
-            box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0; */
             box-sizing: border-box;
             color: #fff;
             cursor: pointer;
@@ -67,7 +63,6 @@
             user-select: none;
             -webkit-user-select: none;
             touch-action: manipulation;
-            /* width: 100%; */
         }
         /* Jendela Pop Up */
         
@@ -94,6 +89,28 @@
         }
         
         #popup-add-more {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(0, 0, 0, .7);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            visibility: hidden;
+        }
+        
+        #popup-chronic-condition {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(0, 0, 0, .7);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            visibility: hidden;
+        }
+        
+        #popup-warning-chronic {
             width: 100%;
             height: 100%;
             position: fixed;
@@ -151,6 +168,14 @@
             visibility: visible;
         }
         
+        #popup-chronic-condition:target {
+            visibility: visible;
+        }
+        
+        #popup-warning-chronic:target {
+            visibility: visible;
+        }
+        
         .for-popup {
             text-align: left;
             margin-left: 10px;
@@ -161,9 +186,17 @@
             line-height: 16px;
         }
         
-        .for-popup2 {
+        .for-popup-chronic {
             text-align: left;
             margin-left: 10px;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: 'IBM Plex Sans';
+            line-height: 16px;
+        }
+        
+        .for-popup2 {
+            text-align: left;
             font-size: 16px;
             font-weight: 400;
             font-family: 'IBM Plex Sans';
@@ -176,7 +209,7 @@
             font-size: 14px;
             font-weight: 400;
             font-family: 'IBM Plex Sans';
-            line-height: 16px;
+            line-height: 20px;
         }
         
         .label-popup {
@@ -193,7 +226,7 @@
     </style>
 </head>
 
-<body class="main" data-new-gr-c-s-check-loaded="14.1125.0" data-gr-ext-installed="">
+<body class="main" data-new-gr-c-s-check-loaded="14.1125.0" data-gr-ext-installed="" style="background-color: white;">
     <div class="top-bar top-0 left-0 fixed w-full h-16">
         <div class="-intro-y top-bar__content bg-white border-theme-3 dark:bg-dark-2 dark:border-dark-2 border-b w-full h-full flex px-5" style="background-color: #0BB4AC;">
             <p class="hidden md:flex items-center h-full mr-auto" style="color: white;font-size: 16px;font-weight: 700;">Medical Portal</p>
@@ -217,12 +250,66 @@
             <h2 class="for-popup" style="margin-left:10px; margin-top: 20px;">Add New Medical History</h2>
             <p class="for-popup2" style="margin-left:10px; margin-top: 30px;">Add new medical history which has not been recorded in patient’s database</p>
             <p class="for-popup3" style="margin-left:10px; margin-top: 40px; font-weight: bold;">Medical History</p>
-            <textarea rows="7" cols="50" placeholder="Type here" style="resize: none;width: 95%; border-radius: 5px;padding: 10px;border: 2px solid #E0E0E0; margin: 10px;">
+            <textarea rows="7" name="more" cols="50" placeholder="Type here" style="resize: none;width: 95%; border-radius: 5px;padding: 10px;border: 2px solid #E0E0E0; margin: 10px;">
             </textarea>
             <div style="text-align: right;">
                 <button class="button-last" style="background-color: transparent; color:blue;" role="button">Cancel</button>
                 <button class="button-last" role="button" type="submit">Save</button>
             </div>
+        </div>
+    </div>
+
+    <div id="popup-chronic-condition">
+        <div class="window" style="text-align: left; height: 530px;">
+            <a href="#" class="close-button" title="Close">X</a>
+            <h2 class="for-popup" style="margin-left:10px; margin-top: 20px;">Chronic Condition</h2>
+            <p class="for-popup-chronic" style="margin-left:10px; margin-top: 30px;">Food Allergy</p>
+
+            <p class="for-popup3" style="margin-top: 40px; font-weight: bold; font-size: 16px;">Allergy Symptom</p>
+            <p class="for-popup3" style="margin-top: 15px; font-size: 16px;">Skin – Itching, flushing, hives (itchy bumps, also called "urticaria"), or swelling (angioedema)</p>
+
+            <p class="for-popup3" style="margin-top: 30px; font-weight: bold; font-size: 16px;">Food Triggering Allergy</p>
+            <p class="for-popup3" style="margin-top: 15px; font-size: 16px;">Shrimp, peanut (cashew, almond, pistachio), dairy products (chocolate, milk, cheese)</p>
+
+            <p class="for-popup3" style="margin-top: 30px; font-weight: bold; font-size: 16px;">Augmenting Factors</p>
+            <p class="for-popup3" style="margin-top: 15px; font-size: 16px;">Exercise, infection, use of medications (e.g., nonsteroidal anti-inflammatory drugs), menstruation and alcohol consumption can increase the likelihood of reactivity or make a reaction more severe)</p>
+
+            <p class="for-popup3" style="margin-top: 30px; font-weight: bold; font-size: 16px;">Last Experienced</p>
+            <p class="for-popup3" style="margin-top: 15px; font-size: 16px;">2 weeks ago</p>
+
+            <div style="text-align: right;">
+                <button class="button-last" type="button" style="width: 124px;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-warning-chronic">
+        <div class="window" style="text-align: left; height: 350px;">
+            <a href="#" class="close-button" title="Close">X</a>
+            <div style="width:100%">
+                <div style="float: left; width: 15%; margin-top: 12px;">
+                    <img src="./test_files/warning-doctor.png" width="87" height="163" style="margin: auto;">
+                </div>
+                <div style="float: right; width: 80%;">
+                    <h2 class="for-popup" style="margin-top: 20px;color: black;">You are prescribing incorrectly!</h2>
+                    <p class="for-popup2" style="margin-top: 30px; line-height: 20px; font-size: 18px;">Please re-check again the patient’s medical records/allergy/chronic conditions before make a prescription.</p>
+                    <div style="background-color: #FEECEF; width:97%; height: 116px; border-radius: 8px; margin-top:20px;">
+                        <div style="float: left; width: 10%; margin-top: 15px;">
+                            <img src="./test_files/warning.png" width="24" height="24" style="margin: auto;">
+                        </div>
+                        <div style="float: right; width: 90%;">
+                            <p class="for-popup2" style="font-size: 18px; margin-top: 15px;line-height: 24px;">You gave patient <span style="font-weight: bold;">Dexamethasone</span> when they have diabetes and liver disease chronic.</p>
+                            <p style="font-weight: bold; font-size: 18px; line-height: 24px;  font-family: 'IBM Plex Sans'; color: #0B63B4; margin-top: 15px;">Learn more about this</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right; margin-top: 20px; width: 97%;">
+                        <button class="button-last" style="background-color: transparent; color:blue;" role="button">Cancel</button>
+                        <button class="button-last" role="button" type="submit" style="width: 127px;">Update</button>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 
@@ -232,23 +319,33 @@
             <h2 class="for-popup" style="margin-left:10px; margin-top: 20px;">Patient Conversation History</h2>
             <p class="for-popup2" style="margin-left:10px; margin-top: 30px;">These are the patients conversation history over these past years.</p>
             <p class="for-popup3" style="margin-left:10px; margin-top: 40px;">September 2023</p>
-            <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
-                <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 12092023.pdf
-            </span>
-            <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
-                <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 08092023.pdf
-            </span>
+            <a href="medical-history.html">
+                <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
+                    <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 12092023.pdf
+                </span>
+            </a>
+            <a href="medical-history.html">
+                <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
+                    <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 08092023.pdf
+                </span>
+            </a>
 
             <p class="for-popup3" style="margin-left:10px; margin-top: 30px;">August 2023</p>
-            <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
-                <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 16082023.pdf
-            </span>
-            <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
-                <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 05082023.pdf
-            </span>
-            <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
-                <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 01082023.pdf
-            </span>
+            <a href="medical-history.html">
+                <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
+                    <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 16082023.pdf
+                </span>
+            </a>
+            <a href="medical-history.html">
+                <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
+                    <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 05082023.pdf
+                </span>
+            </a>
+            <a href="medical-history.html">
+                <span class="label-popup" style="height: 44px;line-height: 35px; margin-left: 10px; margin-top: 10px;">
+                    <img src="./test_files/shared.png" width="20" height="20" style="display:inline-block;">&emsp;[Dewi Sinta] - Chat Record 01082023.pdf
+                </span>
+            </a>
         </div>
     </div>
 
@@ -290,12 +387,12 @@
                         font-size: 20px;
                         font-weight: 700;
                         font-family: 'IBM Plex Sans';">Patient Electronic Medical Record</h3>
-                        <div style=" float:left; width:48.5%; height:76px; background-color: #F8F8F8; margin-bottom: 15px; border-radius: 8px; ">
+                        <div style=" float:left; width:48.5%; background-color: #F8F8F8; margin-bottom: 15px; border-radius: 8px; ">
                             <a href="#popup">
                                 <span style="display:inline-block;"><img src="./test_files/medical-template.png" width="596" height="76"></span>
                             </a>
                         </div>
-                        <div style="float:right;width: 48.5%; height:76px;background-color: #F8F8F8; margin-left: 10px;  border-radius: 8px; margin-bottom: 15px; ">
+                        <div style="float:right;width: 48.5%; background-color: #F8F8F8; margin-left: 10px;  border-radius: 8px; margin-bottom: 15px; ">
                             <a href="#popup2">
                                 <span style="display:inline-block;"><img src="./test_files/patient-template.png" width="596" height="76"></span>
                             </a>
@@ -338,19 +435,19 @@
                             <span class="label-kemenkes">Depression</span>
                             <span class="label-kemenkes">Toxoplasmosis</span>
                             <span class="label-kemenkes">Liver Disease</span>
-                            <span class="label-add-more" style="margin-left: 10px; margin-top:10px">+ Add more</span>
+                            <a href="#popup-add-more"> <span class="label-add-more" style="margin-left: 10px; margin-top:10px">+ Add more</span></a>
 
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400; margin-top: 10px;">Immunization</p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Hepatitis A</span>
                             <span class="label-kemenkes">Influenza</span>
-                            <span class="label-add-more">+ Add more</span>
+                            <a href="#popup-add-more"><span class="label-add-more">+ Add more</span></a>
 
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400; margin-top: 10px;">Family History</p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Diabetes</span>
                             <span class="label-kemenkes">High Blood Pressure</span>
-                            <span class="label-add-more">+ Add more</span>
+                            <a href="#popup-add-more"><span class="label-add-more">+ Add more</span></a>
                         </div>
-                        <div style=" float:left; width:48.5%; height:165px      ; background-color: #F8F8F8; margin-bottom: 15px; border-radius: 8px; ">
+                        <div style=" float:left; width:48.5%; height:175px      ; background-color: #F8F8F8; margin-bottom: 15px; border-radius: 8px; ">
                             <div class="text-base font-medium " style="padding:10px;background-color: #0BB4AC; color: white;font-family: 'IBM Plex Sans';font-weight: 600;text-align: center;border-radius: 8px 8px 0 0; ">Known Allergies</div>
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400;">Food Allergy </p>
                             <span class="label-kemenkes" style="margin-left: 10px;">Peanut</span>
@@ -362,16 +459,16 @@
                             <span class="label-kemenkes">Medixon</span>
                             <span class="label-add-more">+ Add more</span>
                         </div>
-                        <div style="float:right;width: 48.5%; height:165px;background-color: #F8F8F8; margin-left: 10px;  border-radius: 8px; margin-bottom: 15px; ">
+                        <div style="float:right;width: 48.5%; height:175px;background-color: #F8F8F8; margin-left: 10px;  border-radius: 8px; margin-bottom: 15px; ">
                             <div class="text-base font-medium " style="padding:10px;background-color: #0BB4AC; color: white;font-family: 'IBM Plex Sans';font-weight: 600;text-align: center; border-radius: 8px 8px 0 0;">Chronic Condition</div>
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400;">Acute</p>
-                            <span class="label-kemenkes" style="margin-left: 10px;">Food Allergy</span>
-                            <span class="label-kemenkes">Cough</span>
+                            <a href="#popup-chronic-condition"><span class="label-kemenkes" style="margin-left: 10px;">Food Allergy</span></a>
+                            <a href="#popup-chronic-condition"><span class="label-kemenkes">Cough</span></a>
                             <span class="label-add-more">+ Add more</span>
 
                             <p style="padding-left: 10px; padding-bottom: 5px; padding-top: 5px; font-family: 'IBM Plex Sans'; font-size: 14px; font-weight: 400; margin-top: 10px;">Chronic</p>
-                            <span class="label-kemenkes" style="margin-left: 10px;">Diabetes</span>
-                            <span class="label-kemenkes">Liver Disease</span>
+                            <a href="#popup-chronic-condition"><span class="label-kemenkes" style="margin-left: 10px;">Diabetes</span></a>
+                            <a href="#popup-chronic-condition"> <span class="label-kemenkes">Liver Disease</span></a>
                             <a href="#popup-add-more"><span class="label-add-more"> + Add more</span></a>
                         </div>
                         <div style=" float:left; width:48.5%; height: 300px; background-color: #F8F8F8; margin-bottom: 15px; border-radius: 8px;    background-image: linear-gradient(180deg, #ECFEFD 0%, #9FF9F4 100%);">
@@ -380,9 +477,9 @@
                             <div style="border-radius: 4px; margin:10px; background-color: white;">
                                 <p style="font-family: 'IBM Plex Sans';font-weight: 400; font-size: 15px; padding: 10px;">Based on allergies listed for the patient,
                                     <span style="color:red;font-weight: 700;">avoid</span> this following drugs:</p>
-                                <span class="label-kemenkes" style="margin-left: 10px;">Antibiotics</span>
-                                <span class="label-kemenkes">Aspirin</span>
-                                <span class="label-kemenkes">Sulfa Drugs</span>
+                                <span class="label-kemenkes" style="margin-left: 10px; background-color: #f4f4f4;color: black;">Antibiotics</span>
+                                <span class="label-kemenkes" style="background-color: #f4f4f4;color: black;">Aspirin</span>
+                                <span class="label-kemenkes" style="background-color: #f4f4f4;color: black;">Sulfa Drugs</span>
 
                                 <p style="font-family: 'IBM Plex Sans';font-weight: 400; font-size: 13px; padding: 10px; font-style: italic;">Existing medication for Chronic Hypertension may interfere with this prescription</p>
                             </div>
@@ -390,23 +487,21 @@
                             <div style="border-radius: 4px; margin:10px; background-color: white;">
                                 <p style="font-family: 'IBM Plex Sans';font-weight: 400; font-size: 15px; padding: 10px;">Following medications should be
                                     <span style="color:red;font-weight: 700;">limited</span> to max 3 days dosage:</p>
-                                <span class="label-kemenkes" style="margin-left: 10px;">Insulin</span>
-                                <span class="label-kemenkes">Antiseizure Drugs</span>
-                                <span class="label-kemenkes">Vecuronium</span>
+                                <span class="label-kemenkes" style="margin-left: 10px;background-color: #f4f4f4;color: black;">Insulin</span>
+                                <span class="label-kemenkes" style="background-color: #f4f4f4;color: black;">Antiseizure Drugs</span>
+                                <span class="label-kemenkes" style="background-color: #f4f4f4;color: black;">Vecuronium</span>
 
                                 <p style="font-family: 'IBM Plex Sans';font-weight: 400; font-size: 13px; padding: 10px; font-style: italic;">Call for consultation thereafter if condition persists</p>
                             </div>
                         </div>
                         <div style="float:right;width: 48.5%; height:300px; margin-left: 10px; margin-bottom: 15px; ">
-                            <div class="text-base font-medium " style="padding:10px;font-family: 'IBM Plex Sans';font-weight: 600;">Prescription</div>
-                            <!-- <form id="form"> -->
-                            <textarea name="w3review" id="presq" rows="7" cols="50" placeholder="Type your prescription here for the patient..." style="resize: none;width: 100%; border-radius: 5px;padding: 10px;">
+                            <div class="text-base font-medium " style="font-family: 'IBM Plex Sans';font-weight: 600;">Prescription</div>
+                            <textarea name="w3review" id="presq" rows="7" cols="50" placeholder="Type your prescription here for the patient..." style="resize: none;width: 100%; border-radius: 5px;padding: 10px; border: 1px solid #E0E0E0;">
                                 </textarea>
                             <div style="text-align: right;">
-                                <button class="button-last" style="background-color: transparent; color:blue;" role="button">Reset all</button>
-                                <button class="button-last" role="button" id="savePres" type="submit">Save</button>
+                                <a href="#popup-warning-chronic"><button class="button-last" style="background-color: transparent; color:blue;" role="button">Reset all</button></a>
+                               <button class="button-last" role="button" id="savePres" type="submit">Save</button>
                             </div>
-                            <!-- </form> -->
                         </div>
                     </div>
                 </div>
@@ -414,18 +509,20 @@
             <div class="chat-box border-theme-5 col-span-12 xl:col-span-3 flex flex-col overflow-hidden xl:border-l xl:border-r p-6" style="grid-column: span 4/span 4;">
                 <div class="intro-y box border border-theme-3 dark:bg-dark-2 dark:border-dark-2 flex items-center px-5 py-4">
                     <div class="flex items-center mr-auto">
-                        <h2 style="font-size: 14px; font-weight: 700;">
+                        <h2 style="font-size: 14px; font-weight: 700; ">
                             Chat Preview
                         </h2>
                     </div>
                 </div>
-                <div class="overflow-y-scroll scrollbar-hidden pt-5 flex-1" id="outputDiv" style="background-color: #E0E0E0;"></div>
-                <div class="intro-y chat-input box border-theme-3 dark:bg-dark-2 dark:border-dark-2 border flex items-center px-5 py-4"><input class="form-control h-12 shadow-none resize-none border-transparent px-5 py-3 focus:shadow-none truncate mr-3 sm:mr-0" rows="1" placeholder="Type your message..." id="input" /></div>
+                <div class="overflow-y-scroll scrollbar-hidden pt-5 flex-1" id="outputDiv" style="background-color: #E0E0E0; "></div>
+                <div class="intro-y chat-input box border-theme-3 dark:bg-dark-2 dark:border-dark-2 border flex items-center px-5 py-4">
+                    <input class="form-control h-12 shadow-none resize-none border-transparent px-5 py-3 focus:shadow-none truncate mr-3 sm:mr-0" rows="1" placeholder="Type your message... " id="input" style="border: 1px solid #E0E0E0 " />
+                </div>
             </div>
 
         </div>
         <!-- <script>
-            var content = document.getElementById("content");
+            var content = document.getElementById("content ");
             let request = new XMLHttpRequest();
             // request.open("GET ", "https://jsonplaceholder.typicode.com/users ");
             request.open("GET ", "https://jsonplaceholder.typicode.com/comments?postId=1 ");
@@ -444,8 +541,10 @@
                 id = 'user_' + Math.random();
             (function() {
                     var pubnub = new PubNub({
-                        publishKey: 'pub-c-76de00d6-4502-4b6c-9e39-3ad2e78525d5',
-                        subscribeKey: 'sub-c-73a0b5a4-10e4-4bbb-9031-4d9fc0c7cc67',
+                        // publishKey: 'pub-c-76de00d6-4502-4b6c-9e39-3ad2e78525d5',
+                        // subscribeKey: 'sub-c-73a0b5a4-10e4-4bbb-9031-4d9fc0c7cc67',
+                        publishKey: 'pub-c-a9663f58-05c2-40a2-a418-c6171b3b0652',
+                        subscribeKey: 'sub-c-a561b85d-0a33-4ec7-9792-dd83d53a05c1',
                         userId: id
                     }); // Your PubNub keys here. Get them from https://dashboard.pubnub.com.
                     var box = document.getElementById("outputDiv"),
@@ -486,6 +585,7 @@
                 }
 
             )();
+
 
             function newRow(m, publisher) {
                 var completed = "";
